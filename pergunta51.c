@@ -12,10 +12,10 @@ LInt newLInt (int v, LInt t){
     return new;
 }
 
-int length (LInt l){
+int length (LInt head){
     int i;
-    for (i = 0; &l->valor != NULL; i++){
-    	l = l->prox;
+    for (i = 0; &head->valor != NULL; i++){
+    	head = head->prox;
     }
     return i;
 }
