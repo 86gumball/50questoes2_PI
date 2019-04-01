@@ -1,6 +1,6 @@
 void freeL (LInt head){
-	LInt tmp;
-	while (&head->valor != NULL){
+	while (head != NULL){
+		LInt tmp = (LInt) malloc (sizeof (struct linkedlist));
 		tmp = head;
 		head = head->prox;
 		free(tmp);

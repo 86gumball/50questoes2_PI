@@ -1,7 +1,6 @@
 void imprimeL (LInt head) {
-	LInt tmp;
-	while (&tmp->valor != NULL){
-		printf("%d\n", &tmp->valor);
-		tmp = tmp->prox;
+	while ((*head).valor != NULL){
+		printf("%d\n", (*head).valor);
+		head = head->prox;
 	} 
 }
