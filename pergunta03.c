@@ -1,7 +1,8 @@
 void imprimeL (LInt head) {
-	while (head != NULL){
-		printf("%d\n", (*head).valor);
-		head = head->prox;
+	LInt current = head;
+	while (current != NULL){
+		printf("%d\n", (*current).valor);
+		current = current->prox;
 	} 
 }
 
