@@ -14,6 +14,8 @@ LInt newLInt (int v, LInt t){
 
 void init (LInt *head){
 	LInt current = *head;
+
+	/* Caso lista única */
     if ((*head)->prox == NULL){
     	free(*head);
     	*head = NULL;
@@ -21,10 +23,14 @@ void init (LInt *head){
     }
     
 	LInt prev;
+	/* prev é um apontador que está sempre 1 nodo atrás de current */
     while (current->prox != NULL){
     	prev = current;
     	current = current->prox;
     }
+
+    /* Quando current é o último nodo, o apontador para o prox de prev é atualizado para NULL,
+       e o nodo current, correspondente ao último nodo é libertado da memória */
     prev->prox = NULL;
     free(current);
 }
