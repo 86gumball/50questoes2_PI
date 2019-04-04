@@ -41,13 +41,13 @@ int drop (int n, LInt *head){
     	*head = NULL;
     	return len;
     }
-
-    int i;
-
+    
     /* Atualiza-se current até chegar ao último elemento a ser eliminado */
+    int i;
     for (i = 0; i < (n-1); i++){
     	current = current->prox;
     } 
+
     LInt output = current->prox; // Guarda-se a posição do elemento seguinte
     current->prox = NULL; // Separa-se a lista em dois (eliminados/restantes)
     freeL(*head); // Liberta-se a lista do eliminados
