@@ -14,7 +14,7 @@ LInt newLInt (int v, LInt t){
 
 int maximo (LInt head){
     LInt current = head; // Apontador usado para percorrer a lista
-    int max = current->valor; // int onde é armazenado o maior valor
+    int max = current->valor; // int onde é armazenado o maior valor, inicializado com o primeiro valor da lista
 
     while (current != NULL){
 
