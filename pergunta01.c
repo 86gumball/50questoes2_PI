@@ -14,7 +14,7 @@ LInt newLInt (int v, LInt t){
 
 int length (LInt head){
     int i;
-    for (i = 0; &head->valor != NULL; i++){
+    for (i = 0; head != NULL; i++){
     	head = head->prox;
     }
     return i;
