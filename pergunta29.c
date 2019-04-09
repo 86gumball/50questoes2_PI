@@ -10,5 +10,5 @@ ABin cloneAB (ABin root) {
     	new->esq = cloneAB (root->esq);
     	new->dir = cloneAB (root->dir);
 	}
-    return abin;
+    return new;
 }
