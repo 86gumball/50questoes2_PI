@@ -36,10 +36,15 @@ void appendL (LInt *head, int x){
     		3. Chama-se a função inorder ao ramo direito.
 */
 
-void inorder (ABin root, LInt *head) {
+void inorder2 (ABin root, LInt *head) {
 	if (root != NULL){ // Condição
-		inorder (root->esq, head);   // Step 1
+		inorder2 (root->esq, head);   // Step 1
 		appendL (head, root->valor); // Step 2
-		inorder (root->dir, head);   // Step 3
+		inorder2 (root->dir, head);   // Step 3
 	}
+}
+
+void inorder (ABin root, LInt *head){
+	*head = NULL; // É mais seguro tornar o pointer *head nulo
+	inorder2(root, head);
 }

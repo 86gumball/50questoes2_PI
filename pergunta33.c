@@ -36,12 +36,15 @@ void appendL (LInt *head, int x){
     		3. Chama-se a função auxiliar à raiz.
 */
 
-void posorder (ABin root, LInt *head) {
+void posorder2 (ABin root, LInt *head) {
 	if (root != NULL){ // Condição
-		posorder (root->esq, head);  // Step 1
-		posorder (root->dir, head);  // Step 2
+		posorder2 (root->esq, head);  // Step 1
+		posorder2 (root->dir, head);  // Step 2
 		appendL (head, root->valor); // Step 3
 	}
 }
 
-// *** Error in `./a.out': double free or corruption (fasttop): 0x000000000211a3d0 ***
+void posorder (ABin root, LInt *head){
+	*head = NULL; // É necessário tornar o apontador *head nulo
+	posorder2(root, head);
+}

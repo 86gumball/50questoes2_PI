@@ -36,12 +36,15 @@ void appendL (LInt *head, int x){
     		3. Chama-se a função preorder ao ramo direito.
 */
 
-void preorder (ABin root, LInt *head) {
+void preorder2 (ABin root, LInt *head) {
 	if (root != NULL){ // Condição
 		appendL (head, root->valor);  // Step 1
-		preorder (root->esq, head);   // Step 2
-		preorder (root->dir, head);   // Step 3
+		preorder2 (root->esq, head);   // Step 2
+		preorder2 (root->dir, head);   // Step 3
 	}
 }
 
-// *** Error in `./a.out': double free or corruption (fasttop): 0x0000000000e4a3d0 ***
+void preorder (ABin root, LInt *head){
+	*head = NULL; // É necessário tornar o apontador *head nulo
+	preorder2 (root, head);
+}
