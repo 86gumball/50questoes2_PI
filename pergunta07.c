@@ -13,66 +13,36 @@ LInt newLInt (int v, LInt t){
 }
 
 void merge (LInt *r, LInt l1, LInt l2){
-	LInt l1c = l1; // Apontador que percorre l1
-	LInt l2c = l2; // Apontador que percorre l2
-	LInt current = *r;
-	if (l1 == NULL && l2 == NULL){
-		*r = NULL;
-		return;
+	*r = newLInt(86, NULL); // Cria-se um nodo "falso" que é removido no fim
+	LInt current = *r; // Apontador que percorre a lista
+
+	while (l1 != NULL || l2 != NULL){
+		/* Caso l1 ou l2 estejam vazios, basta ligar current a l1 ou l2 (dependendo de qual está vazio)
+		   e quebrar o loop que a lista está ordenada */
+		if (l1 == NULL){
+			current->prox = l2;
+			break;
+		} else if (l2 == NULL){
+			current->prox = l1;
+			break;
+		} 
+
+		/* Caso nenhuma das listas seja vazia, é preciso fazer algum "rewiring" dependendo de qual dos valores
+		   na cabeça da lista é menor. */
+		else {
+			if (l1->valor < l2->valor){
+				current->prox = l1;      // current passa a apontar para l1
+				l1 = l1->prox;           // l1 anda um nodo para a frente
+				current = current->prox; // current anda um nodo para a frente
+			} else {
+				current->prox = l2;
+				l2 = l2->prox;
+				current = current->prox;
+			} 
+		} 
 	}
-	if (l1c == NULL){
-		(*r)->valor = l2c->valor;
-		(*r)->prox = NULL;
-		current = *r;
-		l2c = l2c->prox;
-		while (l2c != NULL){
-            current->prox = newLInt(l2c->valor, NULL);
-            l2c = l2c->prox;
-            current = current->prox;
-        } 
-        return;
-	} else if (l2c == NULL){
-		(*r)->valor = l1c->valor;
-		(*r)->prox = NULL;
-		current = *r;
-		l1c = l1c->prox;
-		while (l1c != NULL){
-			current->prox = newLInt(l1c->valor, NULL);
-			l1c = l1c->prox;
-			current = current->prox;
-		}
-	}
-	if (l1c->valor < l2c->valor){
-		(*r)->valor = l1c->valor;
-		current = *r;
-		l1c = l1c->prox;
-	} else {
-		(*r)->valor = l2c->valor;
-		current = *r;
-		l2c = l2c->prox;
-	} 
-	while (l1c != NULL && l2c != NULL){
-		if (l1c->valor < l2c->valor){
-			current->prox = newLInt(l1c->valor, NULL);
-			l1c = l1c->prox;
-			current = current->prox;
-		} else {
-			current->prox = newLInt(l2c->valor, NULL);
-			l2c = l2c->prox;
-			current = current->prox;
-		} 
-	} 
-	if (l1c == NULL){
-		while (l2c != NULL){
-			current->prox = newLInt(l2c->valor, NULL);
-			l2c = l2c->prox;
-			current = current->prox;
-		} 
-	} else {
-		while (l1c != NULL){
-			current->prox = newLInt(l1c->valor, NULL);
-			l1c = l1c->prox;
-			current = current->prox;
-		} 
-	} 
+
+	current = *r;    // Current guarda o nodo a ser removido (rip 86 :c )
+	*r = (*r)->prox; // *r passa a apontar para o verdadeiro início da lista merged
+	free(current);   // O nodo com o 86 é libertado da memória
 }
