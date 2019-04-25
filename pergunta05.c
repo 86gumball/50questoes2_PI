@@ -39,17 +39,17 @@ void insertOrd (LInt *head, int x){
 
 	/* O loop percorre a lligada até encontrar um nodo com valor maior que x ou até detetar
 	   que está no ultimo nodo, guardando a última posição pela qual passou no apontador tmp */
-    for (i = 0; x > (*current).valor && (*current).prox != NULL; i++){
+    for (i = 0; x > current->valor && current->prox != NULL; i++){
     	tmp = current;
-    	current = (*current).prox;
+    	current = current->prox;
     }
 
     /* Se x for maior que o valor guardado em *current significa que estamos no fim da lligada
-       (Loop acaba porque (*current).prox == NULL)) e é criado um nodo com valor x a apontar para
+       (Loop acaba porque current->prox == NULL)) e é criado um nodo com valor x a apontar para
        NULL que é inserido no final da lista. */
-    if (x > (*current).valor){
+    if (x > current->valor){
     	LInt new = newLInt (x, NULL);
-    	(*current).prox = new;
+    	current->prox = new;
 
     /* Caso este else statement seja avaliado sabe-se que x <= (*current).valor */
     } else {
@@ -65,7 +65,7 @@ void insertOrd (LInt *head, int x){
     	   é usado para aceder a componente prox e atualizar com o valor do novo nodo,
     	   ligando assim a lista ligada por completo. */
     	} else {
-	    	(*tmp).prox = new;
+	    	tmp->prox = new;
     	} 
     }
 }
