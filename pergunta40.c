@@ -18,8 +18,8 @@ int dumpAbin (ABin root, int v[], int n) {
     if (n == 0){
     	return 0;
     } else {
-    	int pos = dumpAbin(root->esq, v, n - 1);                        // Step 1
-    	v[pos] = root->valor;                                           // Step 2
+    	int pos = dumpAbin(root->esq, v, n - 1);                          // Step 1
+    	v[pos] = root->valor;                                             // Step 2
     	return pos + 1 + dumpAbin(root->dir, v + pos + 1, n - (pos + 1)); // Step 3
     } 
 }
