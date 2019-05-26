@@ -18,7 +18,7 @@ int removeOneOrd (LInt *head, int x){
     /* Casos triviais (lista vazia e listas de 1 elemento) */
     if (current == NULL){
     	return 1;
-    } else if (current->.prox == NULL && current->.valor == x){
+    } else if (current->prox == NULL && current->valor == x){
     	free (*head);
     	*head = NULL;
     	return 0;
@@ -28,8 +28,8 @@ int removeOneOrd (LInt *head, int x){
        seja encontrado o elemento x no nodo *current */
     LInt prev;
     while (current != NULL){
-     	if (current->.valor == x){
-     		prev->prox = current->.prox;
+     	if (current->valor == x){
+     		prev->prox = current->prox;
      		free(current);
      		return 0;
      	}
