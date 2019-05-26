@@ -1,20 +1,16 @@
 #include "abin.h"
 
 int lookupAB (ABin root, int x) {
-	/* Caso paragem, ou seja, x não existe na árvore binária. */
-	if (root == NULL){
-		return 0;
-
-	} else {
-		/* Se o valor do nodo for x, o valor foi encontrado e retorna-se 1. */
-		if (root->valor == x){
+	/* Se encontra x dá return a 1, caso contrário vai procurando à esquerda ou direita dependendo
+	   se é maior ou menor, se o loop acabar significa que não se encontrou o nodo e dá-se return 0 */
+	while(root != NULL){
+		if(x == root->valor){
 			return 1;
-		/* Se x for menor que o nodo, procura-se à esquerda */
 		} else if (x < root->valor){
-			lookupAB(root->esq, x);
-		/* Se x for mairo que o nodo, procura-se à direita */
+			root = root->esq;
 		} else {
-			lookupAB(root->dir, x);
-		} 
-	} 
+			root = root->dir;
+		}
+	}	
+	return 0; 
 }
