@@ -34,7 +34,7 @@ int removeOneOrd (LInt *head, int x){
      		return 0;
      	}
     	prev = current;
-     	current = current->.prox;
+     	current = current->prox;
     }
     /* Caso não seja encontrado x, retorna-se 1 */
     return 1;
